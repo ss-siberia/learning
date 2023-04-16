@@ -1,7 +1,7 @@
 const React = require("react");
 const Layout = require("./Layout");
 
-function Cart({ userSession }) {
+function Cart({ userSession, CartFromDB }) {
   return (
     <Layout userSession={userSession}>
       <main>
@@ -18,19 +18,21 @@ function Cart({ userSession }) {
               </tr>
             </thead>
             <tbody id="cart-table" className="all-product-cart">
-              <tr className="tr-item">
-                <td>Название товара</td>
-                <td className="for-change">
-                  <input type="number" min="1" value="Кол-во товара" />
-                </td>
-                <td className="product-price">Цена за штуку</td>
-                <td className="product-total">Общая цена за позицию</td>
-                <td>
-                  <button className="delete-cart btn btn-danger">
-                    Удалить
-                  </button>
-                </td>
-              </tr>
+              {CartFromDB.map((el) => (
+                <tr className="tr-item">
+                  <td>{el["Product.name"]}</td>
+                  <td className="for-change">
+                    <input type="number" min="1" value={el.quantity} />
+                  </td>
+                  <td className="product-price">{el.price}</td>
+                  <td className="product-total">{el.price}</td>
+                  <td>
+                    <button className="delete-cart btn btn-danger">
+                      Удалить
+                    </button>
+                  </td>
+                </tr>
+              ))}
 
               <tr>
                 <td />
