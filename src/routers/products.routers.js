@@ -11,7 +11,6 @@ const { Product } = require("../../db/models");
 router.get("/", async (req, res) => {
   const productsFromDB = await Product.findAll({ raw: true });
   renderTemplate(AllProducts, { productsFromDB }, req, res);
-  console.log(Product);
 });
 
 router.get("/new", (req, res) => {

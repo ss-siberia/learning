@@ -3,9 +3,9 @@ const { newProduct } = document.forms;
 // Добавление нового товара
 newProduct?.addEventListener("submit", async (event) => {
   event.preventDefault();
-  const data = new FormData(newProduct);
-  const formData = Object.fromEntries(data.entries());
-  console.log("datadatadata", formData);
+  const data = new FormData(newProduct); // если тут выходит пустой объект, то делаем dataForReq (см. ниже)
+  const dataForReq = Object.fromEntries(data.entries());
+  // console.log("Проверка на пустой объект", data, dataForReq);
 
   try {
     const response = await fetch("/products/new", {
@@ -13,15 +13,14 @@ newProduct?.addEventListener("submit", async (event) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(dataForReq),
     });
     const result = await response.json();
-    console.log("result", result);
     if (result.msg) {
       alert(result.msg);
     } else {
-      // alert("Карточка создана");
-      // document.querySelectorAll("input").forEach((el) => (el.value = ""));
+      alert("Карточка создана");
+      document.querySelectorAll("input").forEach((el) => (el.value = ""));
     }
   } catch (error) {
     alert("Ошибка создания карточки", error);
@@ -39,7 +38,6 @@ allProduct?.addEventListener("click", async (e) => {
         method: "DELETE",
       });
       if (response.ok) {
-        // чтобы был response.ok, нужно в ручке передавать res.json({});
         e.target.parentNode.parentNode.remove();
       }
     }
@@ -95,7 +93,6 @@ allProduct?.addEventListener("click", async (e) => {
       });
 
       if (response.ok) {
-        // чтобы был response.ok, нужно в ручке передавать res.json({});
         console.log(
           1,
           productNameInput,
