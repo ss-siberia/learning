@@ -22,10 +22,7 @@ module.exports = function Products({ userSession, productsFromDB }) {
                   <button className="add-to-cart btn btn-success">
                     Добавить в корзину
                   </button>
-                  <button
-                    className="del-product btn btn-danger"
-                    data-productid={el.id}
-                  >
+                  <button className="del-product btn btn-danger" id={el.id}>
                     Удалить товар
                   </button>
                   <button

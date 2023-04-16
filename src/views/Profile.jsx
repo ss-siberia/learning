@@ -8,6 +8,7 @@ function Profile({ userSession }) {
       <ul className="list">
         <li>Имя пользователя:</li>
         <li>Email:</li>
+        <button>Редактировать</button>
       </ul>
     </Layout>
   );

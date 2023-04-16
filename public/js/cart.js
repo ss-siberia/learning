@@ -4,10 +4,11 @@ const allProducts = document.querySelector(".all-product");
 allProducts?.addEventListener("click", async (e) => {
   if (e.target.classList.contains("add-to-cart")) {
     const idProduct = e.target.closest("li").id;
-    const priceProduct = e.target
-      .closest("li")
-      .querySelector(".product-price").textContent;
-    console.log(idProduct, priceProduct);
+    const priceProduct = e.target.closest("li");
+    const priceProduct111 =
+      priceProduct.querySelector(".product-price").textContent;
+
+    console.log(priceProduct111, "priceProduct111");
     try {
       const response = await fetch("/cart", {
         method: "POST",
@@ -17,11 +18,11 @@ allProducts?.addEventListener("click", async (e) => {
         body: JSON.stringify({
           productId: idProduct,
           quantity: 1,
-          priceForAllOneProduct: priceProduct,
+          priceForAllOneProduct: priceProduct111,
         }),
       });
       const result = await response.json();
-
+      console.log("result", result);
       if (response.ok) {
         alert("в корзине");
       }

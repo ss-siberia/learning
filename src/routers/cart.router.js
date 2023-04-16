@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
     where: { userId },
     include: {
       model: Product,
-      attributes: ["name"],
+      attributes: ["name", "description"],
     },
     raw: true,
   });
@@ -23,6 +23,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   const { productId, quantity, priceForAllOneProduct } = req.body;
   const { userId } = req.session;
+  console.log("result222", req.body);
   try {
     const newCartUser = await CartUser.create({
       userId,

@@ -5,7 +5,7 @@ newProduct?.addEventListener("submit", async (event) => {
   event.preventDefault();
   const data = new FormData(newProduct); // если тут выходит пустой объект, то делаем dataForReq (см. ниже)
   const dataForReq = Object.fromEntries(data.entries());
-  // console.log("Проверка на пустой объект", data, dataForReq);
+  console.log("Проверка на пустой объект", data, dataForReq);
 
   try {
     const response = await fetch("/products/new", {
@@ -58,6 +58,13 @@ allProduct?.addEventListener("click", async (e) => {
       );
       const productPrice = productLi.querySelector(".product-price");
 
+      console.log(
+        "объекты для добавления импута",
+        productName.textContent,
+        productName.textContent,
+        productDescription.textContent
+      );
+
       productName.innerHTML = `<input type="text" class="new-product-name" value="${productName.textContent}"/>`;
       productDescription.innerHTML = `<input class="new-product-description" value="${productDescription.textContent}"/>`;
       const price = parseInt(productPrice.textContent);
@@ -108,8 +115,8 @@ allProduct?.addEventListener("click", async (e) => {
         console.log(2, productName, productDescription, productPrice);
 
         productName.innerText = productNameInput; // можно так и так)
-        productDescription.innerHTML = `<p className="product-description">${productDescriptionInput}</p>`;
-        productPrice.innerHTML = `<div className="product-price">${productPriceInput} руб.</div>`;
+        productDescription.innerText = productDescriptionInput;
+        productPrice.innerText = productPriceInput;
 
         const editButton = productLi.querySelector(".save-edited-product");
         editButton.innerText = "Изменить товар";
