@@ -27,6 +27,7 @@ module.exports = {
 
 // * npx sequelize db:create
 
+<<<<<<< HEAD
 // * npx sequelize model:generate --name User --attributes firstName:string,middleName:string,lastName:string,email:string,phone:string,password:string,isAdmin:boolean
 // * npx sequelize model:generate --name Category --attributes categoryName:string
 // * npx sequelize model:generate --name TypeHouse --attributes typeHouseName:string
@@ -46,6 +47,9 @@ module.exports = {
 
 
 
+=======
+// * npx sequelize model:generate --name User --attributes name:string,email:string,password:string,isAdmin:boolean
+>>>>>>> 41206e678bf6217d8443be6b6cb37bb45896a2b3
 // * npx sequelize model:generate --name Product --attributes name:string,description:text,price:integer
 // * npx sequelize model:generate --name CartUser --attributes userId:integer,productId:integer,quantity:integer,priceForAllOneProduct:integer
 // Чисто для отработки связи many-to-many:
