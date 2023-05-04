@@ -1,6 +1,7 @@
 const React = require("react");
 
 module.exports = function Navbar({ userSession }) {
+  console.log(userSession, "userSessionuserSessionuserSession");
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
@@ -26,7 +27,7 @@ module.exports = function Navbar({ userSession }) {
         <a className="navbar-brand btn btn-primary" href="/profile">
           Личный кабинет
         </a>
-        <p className="text-danger h4">Привет, пользователь</p>
+        <p className="text-danger h4">Привет, {userSession}</p>
       </div>
     </nav>
   );

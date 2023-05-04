@@ -5,7 +5,7 @@ const ReactDOMServer = require("react-dom/server");
 module.exports = function renderTemplate(reactComponent, props, req, res) {
   const reactElement = React.createElement(reactComponent, {
     ...props,
-    userSession: req.session?.user || "",
+    userSession: req.session?.userName || "",
   });
   const html = ReactDOMServer.renderToStaticMarkup(reactElement);
   res.send(`<!DOCTYPE html>${html}`);

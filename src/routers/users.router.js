@@ -52,7 +52,7 @@ router.post("/login", async (req, res) => {
     if (user) {
       const passCheck = await bcrypt.compare(password, user.password);
       if (passCheck) {
-        req.session.user = user.name;
+        req.session.userName = user.name;
         req.session.userId = user.id;
 
         res.json({

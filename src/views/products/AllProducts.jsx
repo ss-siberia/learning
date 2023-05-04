@@ -12,6 +12,7 @@ module.exports = function Products({ userSession, productsFromDB }) {
               className="product border p-4"
               name="product"
               id={el.id}
+              data-priceproduct={el.price}
               style={{ maxWidth: 550 }}
             >
               <div className="product-details">
@@ -22,7 +23,10 @@ module.exports = function Products({ userSession, productsFromDB }) {
                   <button className="add-to-cart btn btn-success">
                     Добавить в корзину
                   </button>
-                  <button className="del-product btn btn-danger" id={el.id}>
+                  <button
+                    className="del-product btn btn-danger"
+                    data-productid={el.id}
+                  >
                     Удалить товар
                   </button>
                   <button

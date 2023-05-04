@@ -32,8 +32,11 @@ const allProduct = document.querySelector(".all-product");
 allProduct?.addEventListener("click", async (e) => {
   try {
     if (e.target.classList.contains("del-product")) {
-      const productId = e.target.dataset.productid;
-      console.log(productId, "productId");
+      // const productId = e.target.dataset.productid;
+      const productId = e.target.closest(".product");
+      productId111 = productId.dataset.priceproduct;
+
+      console.log(productId111, "productId111");
       const response = await fetch(`/products/${productId}`, {
         method: "DELETE",
       });
